@@ -1,0 +1,16 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Assignment requirement: allow read, write (create/update/delete)
+    // access to every document in every collection.
+    //
+    // NOTE: this is intentionally open for coursework/testing. Never ship
+    // an app to production with these rules -- anyone with your project
+    // config could read or wipe your data.
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
